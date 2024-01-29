@@ -4,8 +4,7 @@ function setup() {
 }
 
 function draw() {
-  fill(random(255),150);
-  stroke(random(255),50);
-  circle(random(width),random(height), random(20));
-
+  fill(random(255), 150);
+  stroke(random(255), 50);
+  circle(random(width), random(height), random(20));
 }
