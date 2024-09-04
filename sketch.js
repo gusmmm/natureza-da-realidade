@@ -44,7 +44,7 @@ function draw() {
       y: 0,
       r: random(20, 100),
       speed: random(1, 5),
-      innerColor: color(hue, 100, 100),
+      innerColor: color(hue, 100, 100),/
       outerColor: color(hue, 50, 100)
     };
     circles.push(c);
