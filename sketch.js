@@ -1,5 +1,6 @@
 let circles = [];
 let hue = 0;
+let explosionTimer = 0;
 
 function setup() {
   createCanvas(1200, 800);
@@ -14,24 +15,20 @@ function draw() {
     c.y += c.speed;
     
     if (c.y > height) {
-      // Split the circle into 10 smaller circles
-      for (let j = 0; j < 10; j++) {
-        let newC = {
-          x: c.x,
-          y: c.y,
-          r: c.r / 3,
-          speed: c.speed / 3,
-          innerColor: color(hue, 100, 100),
-          outerColor: color(hue, 50, 100)
-        };
-        circles.push(newC);
-      }
-      // Remove the original circle
-      circles.splice(i, 1);
+      // Change color to simulate a solar explosion
+      c.outerColor = color(hue, 0, 255);
+      c.innerColor = color(hue, 0, 255);
+      explosionTimer = 0;
     } else {
-      fill(c.outerColor);
-      stroke(c.outerColor);
-      ellipse(c.x, c.y, c.r * 2, c.r * 2);
+      explosionTimer += 1;
+      if (explosionTimer > 50) {
+        // Remove the circle after 0.5 seconds
+        circles.splice(i, 1);
+      } else {
+        fill(c.outerColor);
+        stroke(c.outerColor);
+        ellipse(c.x, c.y, c.r * 2, c.r * 2);
+      }
     }
   }
   
