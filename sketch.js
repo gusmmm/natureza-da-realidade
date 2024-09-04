@@ -36,16 +36,17 @@ function draw() {
   if (hue > 255) {
     hue = 0;
   }
-}
-
-function mousePressed() {
-  let c = {
-    x: random(width),
-    y: 0,
-    r: random(20, 100),
-    speed: random(1, 5),
-    innerColor: color(hue, 100, 100),
-    outerColor: color(hue, 50, 100)
-  };
-  circles.push(c);
+  
+  // Add new circles at random intervals
+  if (random(1) < 0.1) {
+    let c = {
+      x: random(width),
+      y: 0,
+      r: random(20, 100),
+      speed: random(1, 5),
+      innerColor: color(hue, 100, 100),
+      outerColor: color(hue, 50, 100)
+    };
+    circles.push(c);
+  }
 }
